@@ -8,7 +8,7 @@ function Blog() {
       {({ inView, ref }) => (
         <section
           ref={ref}
-          className={`flex flex-col pt-4 md:snap-center ${
+          className={`flex min-h-[calc(100vh-4rem)] flex-col pt-4 md:snap-center ${
             inView ? 'fade-in-tb' : ''
           }`}
         >

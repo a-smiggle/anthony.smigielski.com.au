@@ -50,7 +50,7 @@ const Home: NextPage = () => {
               />
             </div>
           </div>
-          <div className="pr-4 text-right">
+          <div className="pr-4 text-right lg:w-1/2">
             <h1 fade-in-lr="1" className="dark:text-slate-300">
               Hello
             </h1>
