@@ -24,7 +24,6 @@ specifiers:
   eslint-plugin-tailwindcss: ^3.6.0
   eslint-plugin-unused-imports: ^2.0.0
   next: ^12.2.2
-  postcss: ^8.4.14
   prettier: ^2.7.1
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -35,7 +34,7 @@ specifiers:
   typescript: 4.7.2
 
 dependencies:
-  '@nextail/core': 0.12.4_lup6kfvyya77tyzmp2h7jpgila
+  '@nextail/core': 0.12.4_grei4oi2xlmqwe365yh5w2mj5m
   '@nextail/hooks': 0.56.1_biqbaboplfbrettd7655fr4n2y
   '@nextail/providers': 0.2.5_biqbaboplfbrettd7655fr4n2y
   next: 12.2.2_biqbaboplfbrettd7655fr4n2y
@@ -51,7 +50,7 @@ devDependencies:
   '@types/react-dom': 18.0.6
   '@typescript-eslint/eslint-plugin': 5.30.7_nzknoh2nmnhfftp7qdkoiggig4
   '@typescript-eslint/parser': 5.30.7_xztl6dhthcahlo6akmb2bmjmle
-  autoprefixer: 10.4.7_postcss@8.4.14
+  autoprefixer: 10.4.7
   eslint: 8.16.0
   eslint-config-airbnb-base: 15.0.0_btspkuwbqkl4adpiufzbathtpi
   eslint-config-airbnb-typescript: 17.0.0_2hiyrae7qweshky5h3gt7obpny
@@ -65,7 +64,6 @@ devDependencies:
   eslint-plugin-simple-import-sort: 7.0.0_eslint@8.16.0
   eslint-plugin-tailwindcss: 3.6.0
   eslint-plugin-unused-imports: 2.0.0_wjgiexbe62xhtv2muminbhpfce
-  postcss: 8.4.14
   prettier: 2.7.1
   tailwindcss: 3.1.6
   typescript: 4.7.2
@@ -240,7 +238,7 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@nextail/core/0.12.4_lup6kfvyya77tyzmp2h7jpgila:
+  /@nextail/core/0.12.4_grei4oi2xlmqwe365yh5w2mj5m:
     resolution: {integrity: sha512-WZcNCcy9lenMO0tHQ8aLwWhAjKyWQzYN0HFdvvwbPRYzjTx3bydI8fpjQjy6NHQwMZACC4vg7J4Sq5siV4IvRg==}
     peerDependencies:
       autoprefixer: ^10.4.5
@@ -250,8 +248,7 @@ packages:
     dependencies:
       '@heroicons/react': 1.0.6_react@18.2.0
       '@nextail/hooks': 0.56.1_biqbaboplfbrettd7655fr4n2y
-      autoprefixer: 10.4.7_postcss@8.4.14
-      postcss: 8.4.14
+      autoprefixer: 10.4.7
       react: 18.2.0
       tailwindcss: 3.1.6
       usehooks-ts: 2.6.0_react@18.2.0
@@ -580,7 +577,7 @@ packages:
     resolution: {integrity: sha512-eBvWn1lvIApYMhzQMsu9ciLfkBY499mFZlNqG+/9WR7PVlroQw0vG30cOQQbaKz3sCEc44TAOu2ykzqXSNnwag==}
     dev: true
 
-  /autoprefixer/10.4.7_postcss@8.4.14:
+  /autoprefixer/10.4.7:
     resolution: {integrity: sha512-ypHju4Y2Oav95SipEcCcI5J7CGPuvz8oat7sUtYj3ClK44bldfvtvcxK6IEK++7rqB7YchDGzweZIBG+SD0ZAA==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -592,7 +589,6 @@ packages:
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
-      postcss: 8.4.14
       postcss-value-parser: 4.2.0
 
   /axe-core/4.4.3:
