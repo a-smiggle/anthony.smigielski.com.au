@@ -1,14 +1,19 @@
 import '../styles/globals.css';
 import '@nextail/core/nextail.css';
 
-import { ThemeProvider } from '@nextail/providers';
+import { LayoutProvider, ThemeProvider } from '@nextail/providers';
 import type { AppProps } from 'next/app';
+
+import Meta from '../components/Meta';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <LayoutProvider>
+      <ThemeProvider>
+        <Meta />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </LayoutProvider>
   );
 }
 
