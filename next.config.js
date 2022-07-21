@@ -1,10 +1,8 @@
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === 'production';
-
 const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
-  assetPrefix: isProd ? '/anthony.smigielski.com.au/' : '',
+  output: 'standalone',
 };
 
 module.exports = nextConfig;
