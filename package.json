@@ -1,6 +1,6 @@
 {
   "name": "anthony.smigielski.com.au",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -13,11 +13,15 @@
     "@nextail/core": "latest",
     "@nextail/hooks": "latest",
     "@nextail/providers": "latest",
-    "next": "^12.2.2",
+    "@supabase/supabase-js": "^1.35.4",
+    "install": "^0.13.0",
+    "next": "^12.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-intersection-observer": "^9.3.5",
+    "remark": "^14.0.2",
+    "remark-html": "^15.0.1",
     "sharp": "^0.30.7"
   },
   "devDependencies": {
@@ -33,7 +37,7 @@
     "eslint-config-next": "12.1.6",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.6.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",

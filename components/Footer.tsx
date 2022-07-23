@@ -22,7 +22,7 @@ function Footer() {
     theme = Theme.fatherTheme;
   }
   return (
-    <footer className="w-full snap-start border-t-2 px-3 pb-4 transition-colors duration-200 md:border-none">
+    <footer className="w-full snap-start px-3 pb-4 transition-colors duration-200">
       <div className="flex flex-col">
         <div className="mt-4 flex flex-col md:mt-0 md:flex-row">
           <nav className="flex flex-1 flex-col items-center justify-center font-bold md:flex-row md:items-end md:justify-between md:pr-5">

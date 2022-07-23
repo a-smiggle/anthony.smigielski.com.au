@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import { BsArrowDownCircleFill } from 'react-icons/bs';
 import {
@@ -26,8 +25,18 @@ import { SectionThree, SectionTwo } from '../components/Developer';
 import Footer from '../components/Footer';
 import Layout from '../components/Layout';
 import Title from '../components/Title';
+import Supabase, { Articles } from '../lib/Supabase';
 
-const Developer: NextPage = () => {
+export async function getStaticProps() {
+  const { data } = await Supabase.from('articles').select('*').order('id');
+  return {
+    props: {
+      articles: data,
+    },
+  };
+}
+
+function Developer({ articles }: { articles: Articles[] }) {
   const [loaded, setLoaded] = useState(false);
   const [wiggle, setWiggle] = useState(0);
 
@@ -222,11 +231,15 @@ const Developer: NextPage = () => {
         </section>
         <SectionTwo />
         <SectionThree />
-        <Blog />
+        <Blog
+          articles={articles.filter((article) =>
+            article.tags.includes('developer')
+          )}
+        />
         <Footer />
       </main>
     </Layout>
   );
-};
+}
 
 export default Developer;

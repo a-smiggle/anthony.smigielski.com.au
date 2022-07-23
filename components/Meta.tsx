@@ -23,7 +23,7 @@ function Meta() {
   return (
     <Head>
       <title>
-        {router.pathname !== '/'
+        {router.pathname !== '/' && !router.pathname.includes('id')
           ? `${capitalizeFirstLetter(router.pathname)} - `
           : ''}
         Anthony Smigleksi

@@ -1,27 +1,45 @@
-import { Button } from '@nextail/core';
-import type { NextPage } from 'next';
+import { Button, ImageCard } from '@nextail/core';
 import Image from 'next/image';
-import { useState } from 'react';
+import Link from 'next/link';
+import { Fragment, useEffect, useState } from 'react';
 
-import Footer from '../components/Footer';
-import Layout from '../components/Layout';
+import Footer from '../../components/Footer';
+import Layout from '../../components/Layout';
+import Supabase, { Articles } from '../../lib/Supabase';
 
-const Husband: NextPage = () => {
+export async function getStaticProps() {
+  const { data } = await Supabase.from('articles').select('*').order('id');
+  return {
+    props: {
+      articles: data,
+    },
+  };
+}
+function BlogPage({ articles }: { articles: Articles[] }) {
   const [selected, setSelected] = useState('all');
+  const [displayed, setDisplay] = useState(articles);
+
+  useEffect(() => {
+    if (selected !== 'all')
+      setDisplay(articles.filter((article) => article.tags.includes(selected)));
+    else setDisplay(articles);
+  }, [selected]);
+
   const buttonStyling =
     'px-4 py-2 bg-black dark:bg-slate-300 text-white dark:text-black uppercase hover:bg-emerald-400 hover:dark:bg-emerald-400 active:translate-y-0.5 transition-all duration-100';
   const activeButtonStyling =
     'px-4 py-2 bg-emerald-500 dark:bg-emerald-500 dark:bg-slate-300 text-white dark:text-white uppercase font-bold';
+
   return (
     <Layout>
-      <main className="relative flex max-h-[calc(100vh-4rem)] w-screen flex-col overflow-y-auto overflow-x-hidden px-8 md:top-[4rem] md:snap-y">
-        <div className="flex min-h-[calc(100vh-4rem)] flex-row justify-center">
+      <main className="relative flex max-h-[calc(100vh-4rem)] w-screen flex-col overflow-y-auto overflow-x-hidden px-8 md:top-[4rem]">
+        <div className="flex flex-row justify-center md:min-h-[calc(100vh-4rem)]">
           <div>
             <h1 className="pb-4 text-center">Articles</h1>
-            <div className="hidden">
+            <div className="grid grid-cols-2 gap-2 md:flex md:flex-row md:justify-center md:gap-0">
               <Button
                 mainStylings={{
-                  className: `rounded-l ${
+                  className: `md:rounded-l ${
                     selected === 'all' ? activeButtonStyling : buttonStyling
                   }`,
                 }}
@@ -62,7 +80,7 @@ const Husband: NextPage = () => {
               </Button>
               <Button
                 mainStylings={{
-                  className: `rounded-r ${
+                  className: `md:rounded-r ${
                     selected === 'gardener'
                       ? activeButtonStyling
                       : buttonStyling
@@ -73,13 +91,31 @@ const Husband: NextPage = () => {
                 Gardener
               </Button>
             </div>
-            <h2 className="pt-4 text-center">Coming Soon</h2>
-            <Image
-              alt="Under Construction"
-              src="/images/under_construction.svg"
-              width={500}
-              height={500}
-            />
+            {displayed && displayed.length === 0 ? (
+              <Fragment>
+                <h2 className="pt-4 text-center">Coming Soon</h2>
+                <Image
+                  alt="Under Construction"
+                  src="/images/under_construction.svg"
+                  width={500}
+                  height={500}
+                />
+              </Fragment>
+            ) : (
+              <div className="grid gap-2 pt-4 md:grid-cols-3 lg:grid-cols-5">
+                {displayed.map((article) => (
+                  <Link key={article.id} href={`/blog/${article.id}`}>
+                    <div className="hover:scale-105">
+                      <ImageCard
+                        image={article.image}
+                        title={article.title}
+                        info={article.excerpt}
+                      />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
@@ -87,6 +123,6 @@ const Husband: NextPage = () => {
       </main>
     </Layout>
   );
-};
+}
 
-export default Husband;
+export default BlogPage;

@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
@@ -7,8 +6,18 @@ import Blog from '../components/Blog';
 import Footer from '../components/Footer';
 import Layout from '../components/Layout';
 import Title from '../components/Title';
+import Supabase, { Articles } from '../lib/Supabase';
 
-const Father: NextPage = () => {
+export async function getStaticProps() {
+  const { data } = await Supabase.from('articles').select('*').order('id');
+  return {
+    props: {
+      articles: data,
+    },
+  };
+}
+
+function Father({ articles }: { articles: Articles[] }) {
   const [loaded, setLoaded] = useState(false);
   const { ref, inView } = useInView({
     threshold: 0.4,
@@ -62,11 +71,15 @@ const Father: NextPage = () => {
             <h4 className="text-right">I hope you enjoy.</h4>
           </div>
         </section>
-        <Blog />
+        <Blog
+          articles={articles.filter((article) =>
+            article.tags.includes('father')
+          )}
+        />
         <Footer />
       </main>
     </Layout>
   );
-};
+}
 
 export default Father;
