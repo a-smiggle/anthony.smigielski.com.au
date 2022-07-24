@@ -39,7 +39,8 @@ function Father({ articles }: { articles: Articles[] }) {
             loaded ? 'fade-in-lr' : ''
           }`}
         >
-          <Image fade-in-lr="3"
+          <Image
+            fade-in-lr="3"
             alt="Father Image"
             src="/images/father/Image2.svg"
             width={750}
