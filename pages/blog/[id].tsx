@@ -34,7 +34,7 @@ function BlogPostPage({ data, content }: { data: Articles; content: string }) {
       <main className="relative flex max-h-[calc(100vh-4rem)] w-screen flex-col overflow-y-auto overflow-x-hidden px-8 md:top-[4rem] md:snap-y">
         <section className={`flex flex-col pb-8`}>
           <h1 className="pb-4 text-center">{data.title}</h1>
-          <div className="mx-auto flex w-3/4 justify-center">
+          <div className="mx-auto flex justify-center md:w-3/4">
             <div>
               <Image
                 src={data.image}

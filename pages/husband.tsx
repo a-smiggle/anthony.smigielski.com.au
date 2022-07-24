@@ -37,8 +37,13 @@ function Husband({ articles }: { articles: Articles[] }) {
           ref={ref}
           className={`flex h-full flex-col justify-between md:snap-center lg:min-h-[calc(100vh-4rem)] lg:flex-row`}
         >
-          <div className="flex h-fit flex-col justify-center pr-4 lg:min-h-[calc(100vh-4rem)]">
+          <div
+            className={`flex h-fit flex-col justify-center pr-4 lg:min-h-[calc(100vh-4rem)] ${
+              loaded ? 'fade-in-lr' : ''
+            }`}
+          >
             <Image
+              fade-in-lr="4"
               alt="Wedding Image"
               src="/images/husband/Image1.svg"
               width={250}
@@ -74,14 +79,20 @@ function Husband({ articles }: { articles: Articles[] }) {
               </p>
             </div>
           </div>
-          <div className="flex h-full flex-row justify-between lg:min-h-[calc(100vh-4rem)] lg:flex-col">
+          <div
+            className={`flex h-full flex-row justify-between lg:min-h-[calc(100vh-4rem)] lg:flex-col ${
+              loaded ? 'fade-in-rl' : ''
+            }`}
+          >
             <Image
+              fade-in-rl="5"
               alt="Thinking Image"
               src="/images/husband/Image2.svg"
               width={250}
               height={250}
             />
             <Image
+              fade-in-rl="6"
               alt="Discussion Image"
               src="/images/husband/Image3.svg"
               width={250}

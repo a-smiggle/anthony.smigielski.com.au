@@ -64,7 +64,7 @@ function Developer({ articles }: { articles: Articles[] }) {
 
         <section
           ref={ref}
-          className={`grid snap-center md:min-h-[calc(100vh-4rem)] md:grid-cols-3 md:grid-rows-4 md:gap-0`}
+          className={`grid md:min-h-[calc(100vh-4rem)] md:snap-center md:grid-cols-3 md:grid-rows-4 md:gap-0`}
         >
           <div
             className={`order-2 md:order-none md:row-span-2 ${

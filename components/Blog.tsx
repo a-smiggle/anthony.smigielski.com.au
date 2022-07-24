@@ -13,7 +13,7 @@ export default function Blog({ articles }: { articles: Articles[] }) {
         {({ inView, ref }) => (
           <section
             ref={ref}
-            className={`flex min-h-[calc(100vh-4rem)] flex-col pt-4 md:snap-start ${
+            className={`flex flex-col pt-4 md:min-h-[calc(100vh-4rem)] md:snap-start ${
               inView ? 'fade-in-tb' : ''
             }`}
           >
@@ -33,7 +33,7 @@ export default function Blog({ articles }: { articles: Articles[] }) {
       {({ inView, ref }) => (
         <section
           ref={ref}
-          className={`flex min-h-[calc(100vh-4rem)] flex-col pt-4 md:snap-start ${
+          className={`flex flex-col pt-4 md:min-h-[calc(100vh-4rem)] md:snap-start ${
             inView ? 'fade-in-tb' : ''
           }`}
         >

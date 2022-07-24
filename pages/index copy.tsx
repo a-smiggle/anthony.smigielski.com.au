@@ -39,7 +39,7 @@ function Home({ articles }: { articles: Articles[] }) {
             loaded ? 'fade-in-lr' : ''
           }`}
         >
-          <div className="hidden min-h-[calc(100vh-4rem)] justify-between lg:flex lg:flex-col">
+          <div className="hidden justify-between md:min-h-[calc(100vh-4rem)] lg:flex lg:flex-col">
             <div fade-in-lr="8" className="p-4">
               <Image
                 className="transition-all duration-300 dark:invert"
@@ -65,7 +65,7 @@ function Home({ articles }: { articles: Articles[] }) {
             </h1>
             <h1
               fade-in-lr="2"
-              className="bg-gradient-to-r  from-emerald-300 to-emerald-600 bg-clip-text py-4 text-5xl text-transparent dark:from-emerald-600 dark:to-emerald-300"
+              className="bg-gradient-to-r from-emerald-300 to-emerald-600 bg-clip-text py-4 text-5xl text-transparent dark:from-emerald-600 dark:to-emerald-300"
             >
               I&apos;m Anthony.
             </h1>
@@ -90,7 +90,7 @@ function Home({ articles }: { articles: Articles[] }) {
               quam.
             </p>
           </div>
-          <div className="hidden min-h-[calc(100vh-4rem)] justify-center lg:flex lg:flex-col">
+          <div className="hidden justify-center lg:flex lg:min-h-[calc(100vh-4rem)] lg:flex-col">
             <div fade-in-lr="7">
               <Image
                 className="transition-all duration-500 dark:invert"

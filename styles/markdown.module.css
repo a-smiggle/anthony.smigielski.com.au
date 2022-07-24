@@ -1,5 +1,5 @@
 .markdown {
-  @apply text-lg leading-relaxed w-3/5;
+  @apply text-lg leading-relaxed md:w-3/5;
 }
 
 .markdown a {

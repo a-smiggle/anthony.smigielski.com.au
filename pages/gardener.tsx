@@ -64,6 +64,7 @@ function Gardener({ articles }: { articles: Articles[] }) {
             </p>
           </div>
           <Image
+            fade-in-lr="4"
             alt="Gardening Image"
             src="/images/gardener/Image1.svg"
             width={750}
