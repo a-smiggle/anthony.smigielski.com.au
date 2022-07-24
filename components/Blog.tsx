@@ -1,12 +1,11 @@
-import { ImageCard } from '@nextail/core';
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 import { InView } from 'react-intersection-observer';
 
-import { Articles } from '../lib/Supabase';
+import { Article } from '../lib/Supabase';
+import ArticleCard from './ArticleCard';
 
-export default function Blog({ articles }: { articles: Articles[] }) {
+export default function Blog({ articles }: { articles: Article[] }) {
   if (articles.length === 0)
     return (
       <InView triggerOnce threshold={0.75}>
@@ -40,15 +39,7 @@ export default function Blog({ articles }: { articles: Articles[] }) {
           <h1 fade-in-tb="1">Latest Articles</h1>
           <div className="grid gap-2 pt-4 md:grid-cols-3 lg:grid-cols-5">
             {articles.map((article) => (
-              <Link key={article.id} href={`/blog/${article.id}`}>
-                <div className="hover:scale-105">
-                  <ImageCard
-                    image={article.image}
-                    title={article.title}
-                    info={article.excerpt}
-                  />
-                </div>
-              </Link>
+              <ArticleCard key={article.id} article={article} />
             ))}
           </div>
         </section>

@@ -6,7 +6,7 @@ import Blog from '../components/Blog';
 import Footer from '../components/Footer';
 import Layout from '../components/Layout';
 import Title from '../components/Title';
-import Supabase, { Articles } from '../lib/Supabase';
+import Supabase, { Article } from '../lib/Supabase';
 
 export async function getStaticProps() {
   const { data } = await Supabase.from('articles').select('*').order('id');
@@ -17,7 +17,7 @@ export async function getStaticProps() {
   };
 }
 
-function Husband({ articles }: { articles: Articles[] }) {
+function Husband({ articles }: { articles: Article[] }) {
   const [loaded, setLoaded] = useState(false);
   const { ref, inView } = useInView({
     threshold: 0.4,

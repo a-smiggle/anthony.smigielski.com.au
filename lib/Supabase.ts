@@ -5,7 +5,7 @@ const Supabase = createClient(
   process.env.SUPABASE_KEY || ''
 );
 
-type Articles = {
+type Article = {
   id: number;
   created_at: string;
   title: string;
@@ -18,5 +18,5 @@ type Articles = {
   pin: boolean;
 };
 
-export type { Articles };
+export type { Article };
 export default Supabase;

@@ -25,7 +25,7 @@ import { SectionThree, SectionTwo } from '../components/Developer';
 import Footer from '../components/Footer';
 import Layout from '../components/Layout';
 import Title from '../components/Title';
-import Supabase, { Articles } from '../lib/Supabase';
+import Supabase, { Article } from '../lib/Supabase';
 
 export async function getStaticProps() {
   const { data } = await Supabase.from('articles').select('*').order('id');
@@ -36,10 +36,9 @@ export async function getStaticProps() {
   };
 }
 
-function Developer({ articles }: { articles: Articles[] }) {
+function Developer({ articles }: { articles: Article[] }) {
   const [loaded, setLoaded] = useState(false);
   const [wiggle, setWiggle] = useState(0);
-
   const { ref, inView } = useInView({
     threshold: 0.4,
     initialInView: true,

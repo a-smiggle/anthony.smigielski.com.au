@@ -1,11 +1,11 @@
-import { Button, ImageCard } from '@nextail/core';
+import { Button } from '@nextail/core';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Fragment, useEffect, useState } from 'react';
 
+import ArticleCard from '../../components/ArticleCard';
 import Footer from '../../components/Footer';
 import Layout from '../../components/Layout';
-import Supabase, { Articles } from '../../lib/Supabase';
+import Supabase, { Article } from '../../lib/Supabase';
 
 export async function getStaticProps() {
   const { data } = await Supabase.from('articles').select('*').order('id');
@@ -15,7 +15,7 @@ export async function getStaticProps() {
     },
   };
 }
-function BlogPage({ articles }: { articles: Articles[] }) {
+function BlogPage({ articles }: { articles: Article[] }) {
   const [selected, setSelected] = useState('all');
   const [displayed, setDisplay] = useState(articles);
 
@@ -104,15 +104,7 @@ function BlogPage({ articles }: { articles: Articles[] }) {
             ) : (
               <div className="grid gap-2 pt-4 md:grid-cols-3 lg:grid-cols-5">
                 {displayed.map((article) => (
-                  <Link key={article.id} href={`/blog/${article.id}`}>
-                    <div className="hover:scale-105">
-                      <ImageCard
-                        image={article.image}
-                        title={article.title}
-                        info={article.excerpt}
-                      />
-                    </div>
-                  </Link>
+                  <ArticleCard key={article.id} article={article} />
                 ))}
               </div>
             )}
