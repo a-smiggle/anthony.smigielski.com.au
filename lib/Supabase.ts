@@ -15,6 +15,7 @@ type Article = {
   imageHeight: number;
   link: string;
   tags: string;
+  subTags: string;
   pin: boolean;
 };
 

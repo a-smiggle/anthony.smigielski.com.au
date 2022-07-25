@@ -102,7 +102,7 @@ function BlogPage({ articles }: { articles: Article[] }) {
                 />
               </Fragment>
             ) : (
-              <div className="grid gap-2 pt-4 md:grid-cols-3 lg:grid-cols-5">
+              <div className="grid gap-2 pt-4 md:grid-cols-2 lg:grid-cols-3">
                 {displayed.map((article) => (
                   <ArticleCard key={article.id} article={article} />
                 ))}

@@ -37,7 +37,7 @@ export default function Blog({ articles }: { articles: Article[] }) {
           }`}
         >
           <h1 fade-in-tb="1">Latest Articles</h1>
-          <div className="grid gap-2 pt-4 md:grid-cols-3 lg:grid-cols-5">
+          <div className="grid gap-2 pt-4 md:grid-cols-2 lg:grid-cols-3">
             {articles.map((article) => (
               <ArticleCard key={article.id} article={article} />
             ))}
