@@ -27,7 +27,7 @@ import Layout from '../components/Layout';
 import Title from '../components/Title';
 import Supabase, { Article } from '../lib/Supabase';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { data } = await Supabase.from('articles').select('*').order('id');
   return {
     props: {

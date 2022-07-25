@@ -1,11 +1,12 @@
 import Image from 'next/image';
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { Fragment, useState } from 'react';
 
 import Footer from '../../components/Footer';
 import Layout from '../../components/Layout';
 import GetArticle from '../../lib/GetArticle';
 import MarkdownToHtml from '../../lib/MarkdownToHtml';
-import { Articles } from '../../lib/Supabase';
+import { Article } from '../../lib/Supabase';
 import markdownStyles from '../../styles/markdown.module.css';
 
 export async function getServerSideProps(context: any) {
@@ -22,37 +23,45 @@ export async function getServerSideProps(context: any) {
   }
   return {
     props: {
-      data: undefined,
-      content: undefined,
+      data: null,
+      content: null,
     },
   };
 }
 
-function BlogPostPage({ data, content }: { data: Articles; content: string }) {
+function BlogPostPage({ data, content }: { data: Article; content: string }) {
+  const router = useRouter();
+  const [loading, setLoading] = useState(true);
+  if (!data || !content) router.push('/404');
+  else setLoading(false);
   return (
     <Layout>
       <main className="relative flex max-h-[calc(100vh-4rem)] w-screen flex-col overflow-y-auto overflow-x-hidden px-8 md:top-[4rem] md:snap-y">
-        <section className={`flex flex-col pb-8`}>
-          <h1 className="pb-4 text-center">{data.title}</h1>
-          <div className="mx-auto flex justify-center md:w-3/4">
-            <div>
-              <Image
-                src={data.image}
-                alt=""
-                layout="intrinsic"
-                width={data.imageWidth}
-                height={data.imageHeight}
-              />
-            </div>
-          </div>
-          <div className="flex justify-center">
-            <div
-              className={markdownStyles.markdown}
-              dangerouslySetInnerHTML={{ __html: content }}
-            />
-          </div>
-        </section>
-        <Footer />
+        {loading === true ? null : (
+          <Fragment>
+            <section className={`flex flex-col pb-8`}>
+              <h1 className="pb-4 text-center">{data.title}</h1>
+              <div className="mx-auto flex justify-center md:w-3/4">
+                <div>
+                  <Image
+                    src={data.image}
+                    alt=""
+                    layout="intrinsic"
+                    width={data.imageWidth}
+                    height={data.imageHeight}
+                  />
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <div
+                  className={markdownStyles.markdown}
+                  dangerouslySetInnerHTML={{ __html: content }}
+                />
+              </div>
+            </section>
+            <Footer />
+          </Fragment>
+        )}
       </main>
     </Layout>
   );

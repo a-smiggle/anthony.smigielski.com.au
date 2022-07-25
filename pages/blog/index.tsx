@@ -7,7 +7,7 @@ import Footer from '../../components/Footer';
 import Layout from '../../components/Layout';
 import Supabase, { Article } from '../../lib/Supabase';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { data } = await Supabase.from('articles').select('*').order('id');
   return {
     props: {
