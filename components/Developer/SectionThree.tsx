@@ -12,9 +12,9 @@ function SectionThree() {
       {({ inView, ref }) => (
         <section
           ref={ref}
-          className="flex flex-col items-center justify-between p-4 pt-4 md:flex-row md:border-none"
+          className="flex h-screen flex-col items-center justify-between p-4 pt-4 md:flex-row md:border-none"
         >
-          <div className="flex h-full w-full flex-col justify-between md:flex-row">
+          <div className="flex h-full w-full flex-col justify-center md:flex-row md:justify-between">
             <div
               className={`hidden grid-cols-2 grid-rows-2 place-items-center gap-2 md:grid md:w-1/2 ${
                 inView ? 'fade-in-lr' : ''

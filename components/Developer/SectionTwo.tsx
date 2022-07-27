@@ -8,10 +8,10 @@ function SectionTwo() {
       {({ inView, ref }) => (
         <section
           ref={ref}
-          className="flex flex-col items-center justify-between p-4 pt-4 md:flex-row md:border-none"
+          className="flex h-screen flex-col items-center justify-center p-4 pt-4 md:flex-row md:justify-between"
         >
           <div
-            className={`flex h-full w-full flex-col justify-between md:flex-row ${
+            className={`flex h-full w-full flex-col justify-center md:flex-row md:justify-between ${
               inView ? 'fade-in-tb' : ''
             }`}
           >
@@ -45,7 +45,7 @@ function SectionTwo() {
                 </p>
               </div>
             </div>
-            <div className="hidden justify-center md:flex md:w-1/2 md:flex-row">
+            <div className="hidden items-center justify-center md:flex md:h-full md:w-1/2 md:flex-row">
               <div fade-in-tb="5">
                 <Image
                   alt=""
