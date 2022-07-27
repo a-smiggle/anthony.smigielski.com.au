@@ -1,11 +1,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
 
-import Blog from '../components/Blog';
-import Footer from '../components/Footer';
 import Layout from '../components/Layout';
-import Title from '../components/Title';
 import Supabase, { Article } from '../lib/Supabase';
 
 export async function getServerSideProps() {
@@ -19,10 +15,7 @@ export async function getServerSideProps() {
 
 function Father({ articles }: { articles: Article[] }) {
   const [loaded, setLoaded] = useState(false);
-  const { ref, inView } = useInView({
-    threshold: 0.4,
-    initialInView: true,
-  });
+
   useEffect(() => {
     setTimeout(() => {
       setLoaded(true);
@@ -30,55 +23,54 @@ function Father({ articles }: { articles: Article[] }) {
   }, []);
 
   return (
-    <Layout>
-      <main className="relative flex max-h-[calc(100vh-4rem)] w-screen flex-col overflow-y-auto overflow-x-hidden px-8 md:top-[4rem] md:snap-y">
-        <Title inView={inView}>The Father</Title>
-        <section
-          ref={ref}
-          className={`flex flex-col items-center justify-between md:min-h-[calc(100vh-4rem)] md:snap-center lg:flex-row ${
-            loaded ? 'fade-in-lr' : ''
-          }`}
-        >
+    <Layout title="The Father" articles={articles}>
+      <section
+        className={`flex flex-col items-center justify-between p-4 md:my-auto md:flex-row ${
+          loaded ? 'fade-in-lr' : ''
+        }`}
+      >
+        <div className="hidden md:flex">
           <Image
             fade-in-lr="3"
             alt="Father Image"
             src="/images/father/Image2.svg"
-            width={750}
-            height={750}
+            width={500}
+            height={500}
           />
-          <div className="text-right md:w-3/4">
-            <h1 fade-in-lr="1">The Father</h1>
-
-            <p fade-in-lr="2" className="pt-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris
-              nunc congue nisi vitae suscipit tellus mauris a. A diam
-              sollicitudin tempor id. Ut porttitor leo a diam sollicitudin
-              tempor id. Phasellus egestas tellus rutrum tellus pellentesque.
-              Massa tempor nec feugiat nisl pretium fusce id velit ut. Blandit
-              volutpat maecenas volutpat blandit aliquam. Nam libero justo
-              laoreet sit. Arcu dui vivamus arcu felis bibendum ut tristique et
-              egestas. Eu consequat ac felis donec et odio pellentesque diam
-              volutpat. Pellentesque adipiscing commodo elit at imperdiet. Nibh
-              praesent tristique magna sit amet purus gravida quis. Lacus sed
-              viverra tellus in hac. Sed euismod nisi porta lorem mollis aliquam
-              ut. Sed augue lacus viverra vitae congue eu consequat. Dolor sit
-              amet consectetur adipiscing elit pellentesque. Et odio
-              pellentesque diam volutpat commodo sed egestas. Semper viverra nam
-              libero justo laoreet sit amet cursus. Volutpat sed cras ornare
-              arcu dui. Quisque id diam vel quam elementum pulvinar etiam non
-              quam.
-            </p>
-            <h4 className="text-right">I hope you enjoy.</h4>
+        </div>
+        <div className="text-right md:w-4/5 lg:w-3/4">
+          <div className="float-left md:hidden">
+            <Image
+              fade-in-lr="3"
+              alt="Father Image"
+              src="/images/father/Image2.svg"
+              width={250}
+              height={250}
+            />
           </div>
-        </section>
-        <Blog
-          articles={articles.filter((article) =>
-            article.tags.includes('father')
-          )}
-        />
-        <Footer />
-      </main>
+          <h1 fade-in-lr="1">The Father</h1>
+
+          <p fade-in-lr="2" className="pt-4">
+            I am extremely grateful to be the father of an amazing daughter.
+            Being a parent has so far gifted me with so much joy as well as
+            challenges which have been opportunities to grow both as a person
+            and as a parent.
+          </p>
+          <p fade-in-lr="3" className="pt-4">
+            I believe that all children are born with innate intelligent and
+            that they are capable of communicating what their needs are. What is
+            needed is the patience, curiosity and desire to understand them.
+            Infants, toddlers, children and teenagers should all be treated as
+            our equals and shown the same basic respect that we expect
+            ourselves. I strive to provide a peaceful and nurturing environment
+            so that my daughter can flourish as she continues grow and learn.
+          </p>
+          <p fade-in-lr="4" className="pt-4">
+            I will aim to provide regular blog posts on challenges I have had as
+            a father and how we as a family work through these.
+          </p>
+        </div>
+      </section>
     </Layout>
   );
 }

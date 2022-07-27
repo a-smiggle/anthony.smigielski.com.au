@@ -12,11 +12,15 @@ function SectionThree() {
       {({ inView, ref }) => (
         <section
           ref={ref}
-          className={`flex flex-col items-center justify-between pt-4 md:min-h-[calc(100vh-4rem)] md:snap-center md:flex-row md:border-none`}
+          className="flex flex-col items-center justify-between p-4 pt-4 md:flex-row md:border-none"
         >
           <div className="flex h-full w-full flex-col justify-between md:flex-row">
-            <div className="hidden grid-cols-2 grid-rows-2 place-items-center gap-2 md:grid md:w-1/2">
-              <div>
+            <div
+              className={`hidden grid-cols-2 grid-rows-2 place-items-center gap-2 md:grid md:w-1/2 ${
+                inView ? 'fade-in-lr' : ''
+              }`}
+            >
+              <div fade-in-lr="1">
                 <Image
                   alt="https://www.flaticon.com/free-icons/administrator"
                   src="/images/admin.png"
@@ -24,7 +28,7 @@ function SectionThree() {
                   height={150}
                 />
               </div>
-              <div>
+              <div fade-in-lr="2">
                 <Image
                   alt="https://www.flaticon.com/free-icons/programm"
                   src="/images/programming.png"
@@ -33,7 +37,7 @@ function SectionThree() {
                   height={150}
                 />
               </div>
-              <div>
+              <div fade-in-lr="3">
                 {theme === 'dark' ? (
                   <Image
                     alt=""
@@ -50,7 +54,7 @@ function SectionThree() {
                   />
                 )}
               </div>
-              <div>
+              <div fade-in-lr="4">
                 {theme === 'dark' ? (
                   <Image
                     alt=""
@@ -71,18 +75,18 @@ function SectionThree() {
 
             <div
               className={`flex flex-col justify-center md:w-1/2 ${
-                inView ? 'fade-in-lr' : ''
+                inView ? 'fade-in-rl' : ''
               }`}
             >
               <div className="flex w-fit flex-col">
                 <h1
-                  fade-in-lr="4"
+                  fade-in-rl="4"
                   className="text-3xl dark:text-emerald-500 md:text-right md:text-4xl"
                 >
                   Other
                 </h1>
                 <h1
-                  fade-in-lr="4"
+                  fade-in-rl="4"
                   className="text-5xl dark:text-emerald-500 md:text-6xl"
                 >
                   Experience
@@ -117,31 +121,19 @@ function SectionThree() {
                     )}
                   </div>
                 </div>
-                <p fade-in-lr="2" className="pt-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Mauris nunc congue nisi vitae suscipit tellus mauris a. A diam
-                  sollicitudin tempor id. Ut porttitor leo a diam sollicitudin
-                  tempor id. Phasellus egestas tellus rutrum tellus
-                  pellentesque. Massa tempor nec feugiat nisl pretium fusce id
-                  velit ut. Blandit volutpat maecenas volutpat blandit aliquam.
-                  Nam libero justo laoreet sit. Arcu dui vivamus arcu felis
-                  bibendum ut tristique et egestas. Eu consequat ac felis donec
-                  et odio pellentesque diam volutpat. Pellentesque adipiscing
-                  commodo elit at imperdiet. Nibh praesent tristique magna sit
-                  amet purus gravida quis. Lacus sed viverra tellus in hac. Sed
-                  euismod nisi porta lorem mollis aliquam ut. Sed augue lacus
-                  viverra vitae congue eu consequat. Dolor sit amet consectetur
-                  adipiscing elit pellentesque. Et odio pellentesque diam
-                  volutpat commodo sed egestas. Semper viverra nam libero justo
-                  laoreet sit amet cursus. Volutpat sed cras ornare arcu dui.
-                  Quisque id diam vel quam elementum pulvinar etiam non quam.
+                <p fade-in-rl="2" className="pt-4">
+                  I have previous experience in Embedded firmware development.
+                  This ranges from programming in C using nRF SDK 17 and Zephyr
+                  OS, to programming in Lua and Python on OpenWRT edge gateways.
+                </p>
+                <p fade-in-lr="3" className="pt-4">
+                  I also have experience in working as a backend developer,
+                  primarily with Node.JS applications and Strapi CMS APIs.
                 </p>
               </div>
 
               <div>
-                <h3 className="pt-4">Navy Sailor</h3>
-                <div className="float-right flex flex-col gap-2 md:hidden ">
+                <div className="float-left flex flex-col gap-2 md:hidden ">
                   {theme === 'dark' ? (
                     <Image
                       alt=""
@@ -164,6 +156,11 @@ function SectionThree() {
                     height={50}
                   />
                 </div>
+                <h3 className="md:pt-4">Navy Sailor</h3>
+                <p className="pt-4">
+                  Before I became a developer, I was an IT systems administrator
+                  in the Royal Australian Navy for six years.
+                </p>
               </div>
 
               <Link href="/resume">

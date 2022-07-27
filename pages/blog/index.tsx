@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { Fragment, useEffect, useState } from 'react';
 
 import ArticleCard from '../../components/ArticleCard';
-import Footer from '../../components/Footer';
 import Layout from '../../components/Layout';
 import Supabase, { Article } from '../../lib/Supabase';
 
@@ -31,88 +30,80 @@ function BlogPage({ articles }: { articles: Article[] }) {
     'px-4 py-2 bg-emerald-500 dark:bg-emerald-500 dark:bg-slate-300 text-white dark:text-white uppercase font-bold';
 
   return (
-    <Layout>
-      <main className="relative flex max-h-[calc(100vh-4rem)] w-screen flex-col overflow-y-auto overflow-x-hidden px-8 md:top-[4rem]">
-        <div className="flex flex-row justify-center md:min-h-[calc(100vh-4rem)]">
-          <div>
-            <h1 className="pb-4 text-center">Articles</h1>
-            <div className="grid grid-cols-2 gap-2 md:flex md:flex-row md:justify-center md:gap-0">
-              <Button
-                mainStylings={{
-                  className: `md:rounded-l ${
-                    selected === 'all' ? activeButtonStyling : buttonStyling
-                  }`,
-                }}
-                onClick={() => setSelected('all')}
-              >
-                All
-              </Button>
-              <Button
-                mainStylings={{
-                  className:
-                    selected === 'developer'
-                      ? activeButtonStyling
-                      : buttonStyling,
-                }}
-                onClick={() => setSelected('developer')}
-              >
-                Developer
-              </Button>
-              <Button
-                mainStylings={{
-                  className:
-                    selected === 'father' ? activeButtonStyling : buttonStyling,
-                }}
-                onClick={() => setSelected('father')}
-              >
-                Father
-              </Button>
-              <Button
-                mainStylings={{
-                  className:
-                    selected === 'husband'
-                      ? activeButtonStyling
-                      : buttonStyling,
-                }}
-                onClick={() => setSelected('husband')}
-              >
-                Husband
-              </Button>
-              <Button
-                mainStylings={{
-                  className: `md:rounded-r ${
-                    selected === 'gardener'
-                      ? activeButtonStyling
-                      : buttonStyling
-                  }`,
-                }}
-                onClick={() => setSelected('gardener')}
-              >
-                Gardener
-              </Button>
-            </div>
-            {displayed && displayed.length === 0 ? (
-              <Fragment>
-                <h2 className="pt-4 text-center">Coming Soon</h2>
-                <Image
-                  alt="Under Construction"
-                  src="/images/under_construction.svg"
-                  width={500}
-                  height={500}
-                />
-              </Fragment>
-            ) : (
-              <div className="grid gap-2 pt-4 md:grid-cols-2 lg:grid-cols-3">
-                {displayed.map((article) => (
-                  <ArticleCard key={article.id} article={article} />
-                ))}
-              </div>
-            )}
+    <Layout title="Anthony Smigielski" articles={articles}>
+      <div className="flex min-h-screen flex-row justify-center p-4">
+        <div>
+          <h1 className="pb-4 text-center">Articles</h1>
+          <div className="grid grid-cols-2 gap-2 md:flex md:flex-row md:justify-center md:gap-0">
+            <Button
+              mainStylings={{
+                className: `md:rounded-l ${
+                  selected === 'all' ? activeButtonStyling : buttonStyling
+                }`,
+              }}
+              onClick={() => setSelected('all')}
+            >
+              All
+            </Button>
+            <Button
+              mainStylings={{
+                className:
+                  selected === 'developer'
+                    ? activeButtonStyling
+                    : buttonStyling,
+              }}
+              onClick={() => setSelected('developer')}
+            >
+              Developer
+            </Button>
+            <Button
+              mainStylings={{
+                className:
+                  selected === 'father' ? activeButtonStyling : buttonStyling,
+              }}
+              onClick={() => setSelected('father')}
+            >
+              Father
+            </Button>
+            <Button
+              mainStylings={{
+                className:
+                  selected === 'husband' ? activeButtonStyling : buttonStyling,
+              }}
+              onClick={() => setSelected('husband')}
+            >
+              Husband
+            </Button>
+            <Button
+              mainStylings={{
+                className: `md:rounded-r ${
+                  selected === 'gardener' ? activeButtonStyling : buttonStyling
+                }`,
+              }}
+              onClick={() => setSelected('gardener')}
+            >
+              Gardener
+            </Button>
           </div>
+          {displayed && displayed.length === 0 ? (
+            <Fragment>
+              <h2 className="pt-4 text-center">Coming Soon</h2>
+              <Image
+                alt="Under Construction"
+                src="/images/under_construction.svg"
+                width={500}
+                height={500}
+              />
+            </Fragment>
+          ) : (
+            <div className="grid gap-2 pt-4 md:grid-cols-2 lg:grid-cols-3">
+              {displayed.map((article) => (
+                <ArticleCard key={article.id} article={article} />
+              ))}
+            </div>
+          )}
         </div>
-
-        <Footer />
-      </main>
+      </div>
     </Layout>
   );
 }

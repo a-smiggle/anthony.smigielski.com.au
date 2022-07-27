@@ -1,8 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
 const Supabase = createClient(
-  process.env.SUPABASE_URL || '',
-  process.env.SUPABASE_KEY || ''
+  process.env.SUPABASE_URL || 'https://EDIT_ME.supabase.co',
+  process.env.SUPABASE_KEY || 'EDIT_ME'
 );
 
 type Article = {

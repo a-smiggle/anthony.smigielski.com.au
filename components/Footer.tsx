@@ -22,7 +22,7 @@ function Footer() {
     theme = Theme.fatherTheme;
   }
   return (
-    <footer className="w-full snap-start px-3 pb-4 transition-colors duration-200">
+    <footer className="w-full border-t p-4 transition-colors duration-200">
       <div className="flex flex-col">
         <div className="mt-4 flex flex-col md:mt-0 md:flex-row">
           <nav className="flex flex-1 flex-col items-center justify-center font-bold md:flex-row md:items-end md:justify-between md:pr-5">
@@ -71,7 +71,8 @@ function Footer() {
           },
           text: { textColor: `${theme.textColor} ${theme.textColorDark}` },
           spacing: { margin: 'mx-4' },
-          sizing: { width: 'md:w-3/4' },
+          sizing: { width: 'md:w-3/4', maxHeight: 'max-h-[80%]' },
+          layout: { overflow: 'overflow-y-auto' },
         }}
         open={design}
         toggle={setDesign}

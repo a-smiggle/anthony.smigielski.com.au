@@ -1,14 +1,22 @@
 import { useRouter } from 'next/router';
-import React, { ReactNode } from 'react';
+import React, { PropsWithChildren } from 'react';
+import { useInView } from 'react-intersection-observer';
 
+import { Article } from '../lib/Supabase';
+import ArticlesSection from './ArticlesSection';
+import Footer from './Footer';
 import Navbar from './Navbar';
 import * as Theme from './Theme';
+import Title from './Title';
 
 interface CustomProps {
-  children: ReactNode;
+  header?: JSX.Element;
+  headerStylings?: string;
+  title?: string;
+  articles?: Article[];
 }
 
-function Layout(props: CustomProps) {
+export default function Layout(props: PropsWithChildren<CustomProps>) {
   const router = useRouter();
   let theme: Theme.Theme = Theme.baseTheme;
 
@@ -21,15 +29,55 @@ function Layout(props: CustomProps) {
   if (router.pathname === '/father') {
     theme = Theme.fatherTheme;
   }
+  const { ref, inView } = useInView({
+    threshold: 0,
+    initialInView: true,
+  });
+
+  function FilterArticles() {
+    if (props.articles) {
+      if (router.pathname === '/')
+        return (
+          <ArticlesSection
+            articles={props.articles
+              .filter((article) => article.pin === true)
+              .sort(
+                (a, b) =>
+                  new Date(a.created_at).getTime() -
+                  new Date(b.created_at).getTime()
+              )}
+          />
+        );
+      if (router.pathname.includes('/blog')) return null;
+      return (
+        <ArticlesSection
+          articles={props.articles.filter((article) =>
+            article.tags.includes(router.pathname.replace('/', ''))
+          )}
+        />
+      );
+    }
+    return null;
+  }
 
   return (
     <div
-      className={`h-screen w-screen overflow-hidden transition-colors duration-300 ${theme.textColor} ${theme.textColorDark} ${theme.bgColor} ${theme.bgColorDark}`}
+      className={`${theme.textColor} ${theme.textColorDark} ${theme.bgColor} ${theme.bgColorDark}`}
     >
-      <Navbar />
-      {props.children}
+      <div>
+        {props.header ? (
+          <header ref={ref} className={props.headerStylings}>
+            {props.header}
+          </header>
+        ) : null}
+        <Navbar />
+        {props.title ? (
+          <Title inView={props.header ? inView : false}>{props.title}</Title>
+        ) : null}
+        <main className="flex min-h-screen flex-col">{props.children}</main>
+        {props.articles ? <FilterArticles /> : null}
+        <Footer />
+      </div>
     </div>
   );
 }
-
-export default Layout;

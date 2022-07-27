@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { BsArrowDownCircleFill } from 'react-icons/bs';
 import {
   SiFirebase,
@@ -18,13 +18,9 @@ import {
   SiTypescript,
 } from 'react-icons/si';
 import { TbLetterC } from 'react-icons/tb';
-import { useInView } from 'react-intersection-observer';
 
-import Blog from '../components/Blog';
 import { SectionThree, SectionTwo } from '../components/Developer';
-import Footer from '../components/Footer';
 import Layout from '../components/Layout';
-import Title from '../components/Title';
 import Supabase, { Article } from '../lib/Supabase';
 
 export async function getServerSideProps() {
@@ -39,10 +35,7 @@ export async function getServerSideProps() {
 function Developer({ articles }: { articles: Article[] }) {
   const [loaded, setLoaded] = useState(false);
   const [wiggle, setWiggle] = useState(0);
-  const { ref, inView } = useInView({
-    threshold: 0.4,
-    initialInView: true,
-  });
+
   useEffect(() => {
     setTimeout(() => {
       setLoaded(true);
@@ -57,14 +50,11 @@ function Developer({ articles }: { articles: Article[] }) {
   });
 
   return (
-    <Layout>
-      <main className="relative flex max-h-[calc(100vh-4rem)] w-screen flex-col overflow-y-auto overflow-x-hidden bg-white px-8 dark:bg-slate-700 md:top-[4rem] md:snap-y">
-        <Title inView={inView}>The Developer</Title>
-
-        <section
-          ref={ref}
-          className={`grid md:min-h-[calc(100vh-4rem)] md:snap-center md:grid-cols-3 md:grid-rows-4 md:gap-0`}
-        >
+    <Layout
+      title="The Developer"
+      articles={articles}
+      header={
+        <Fragment>
           <div
             className={`order-2 md:order-none md:row-span-2 ${
               loaded ? 'fade-in-lr' : ''
@@ -227,16 +217,12 @@ function Developer({ articles }: { articles: Article[] }) {
               </div>
             </div>
           </div>
-        </section>
-        <SectionTwo />
-        <SectionThree />
-        <Blog
-          articles={articles.filter((article) =>
-            article.tags.includes('developer')
-          )}
-        />
-        <Footer />
-      </main>
+        </Fragment>
+      }
+      headerStylings={`grid md:grid-cols-3 md:grid-rows-4 p-4 md:gap-0 md:h-screen`}
+    >
+      <SectionTwo />
+      <SectionThree />
     </Layout>
   );
 }

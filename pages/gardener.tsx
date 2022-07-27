@@ -1,11 +1,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
 
-import Blog from '../components/Blog';
-import Footer from '../components/Footer';
 import Layout from '../components/Layout';
-import Title from '../components/Title';
 import Supabase, { Article } from '../lib/Supabase';
 
 export async function getServerSideProps() {
@@ -19,10 +15,6 @@ export async function getServerSideProps() {
 
 function Gardener({ articles }: { articles: Article[] }) {
   const [loaded, setLoaded] = useState(false);
-  const { ref, inView } = useInView({
-    threshold: 0.4,
-    initialInView: true,
-  });
   useEffect(() => {
     setTimeout(() => {
       setLoaded(true);
@@ -30,39 +22,45 @@ function Gardener({ articles }: { articles: Article[] }) {
   }, []);
 
   return (
-    <Layout>
-      <main className="relative flex max-h-[calc(100vh-4rem)] w-screen flex-col overflow-y-auto overflow-x-hidden px-8 md:top-[4rem] md:snap-y">
-        <Title inView={inView}>The Gardener</Title>
-        <section
-          ref={ref}
-          className={`flex flex-col items-center justify-between md:min-h-[calc(100vh-4rem)] md:snap-center lg:flex-row ${
-            loaded ? 'fade-in-lr' : ''
-          }`}
-        >
-          <div className="md:w-3/4">
-            <h1 fade-in-lr="1">The Gardener</h1>
-
-            <p fade-in-lr="2" className="pt-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris
-              nunc congue nisi vitae suscipit tellus mauris a. A diam
-              sollicitudin tempor id. Ut porttitor leo a diam sollicitudin
-              tempor id. Phasellus egestas tellus rutrum tellus pellentesque.
-              Massa tempor nec feugiat nisl pretium fusce id velit ut. Blandit
-              volutpat maecenas volutpat blandit aliquam. Nam libero justo
-              laoreet sit. Arcu dui vivamus arcu felis bibendum ut tristique et
-              egestas. Eu consequat ac felis donec et odio pellentesque diam
-              volutpat. Pellentesque adipiscing commodo elit at imperdiet. Nibh
-              praesent tristique magna sit amet purus gravida quis. Lacus sed
-              viverra tellus in hac. Sed euismod nisi porta lorem mollis aliquam
-              ut. Sed augue lacus viverra vitae congue eu consequat. Dolor sit
-              amet consectetur adipiscing elit pellentesque. Et odio
-              pellentesque diam volutpat commodo sed egestas. Semper viverra nam
-              libero justo laoreet sit amet cursus. Volutpat sed cras ornare
-              arcu dui. Quisque id diam vel quam elementum pulvinar etiam non
-              quam.
-            </p>
+    <Layout title="The Gardner" articles={articles}>
+      <section
+        className={`flex flex-col items-center justify-between p-4 md:my-auto md:flex-row ${
+          loaded ? 'fade-in-lr' : ''
+        }`}
+      >
+        <div className="lg:w-3/4">
+          <h1 fade-in-lr="1">The Gardener</h1>
+          <div className="float-right flex lg:hidden">
+            <Image
+              fade-in-lr="4"
+              alt="Gardening Image"
+              src="/images/gardener/Image1.svg"
+              width={250}
+              height={250}
+            />
           </div>
+          <p fade-in-lr="2" className="pt-4">
+            The more we try and separate ourselves from nature, the more
+            imbalanced we become with our surroundings and ourselves. I believe
+            to improve our health and the health of the planet it is essential
+            we all move towards a more peaceful, organic, plant focused
+            lifestyle.
+          </p>
+          <p fade-in-lr="3" className="pt-4">
+            We aim to grow as much of our food as possible. By growing a broad
+            range of fruits and vegetables, all the essential nutrients we need
+            will eventually be sourced from within our small suburban block.
+            While we work towards this goal, we are still outsourcing fresh
+            organic produce. We also purchase bulk, dried legumes and grains
+            which helps extends the base of the vegetables we grow.
+          </p>
+          <p fade-in-lr="4" className="pt-4">
+            I will aim to provide regular blog posts on the gardening methods we
+            use, plants we are growing and recipes my amazing wife creates with
+            the food grown.
+          </p>
+        </div>
+        <div className="hidden lg:flex">
           <Image
             fade-in-lr="4"
             alt="Gardening Image"
@@ -70,14 +68,8 @@ function Gardener({ articles }: { articles: Article[] }) {
             width={750}
             height={750}
           />
-        </section>
-        <Blog
-          articles={articles.filter((article) =>
-            article.tags.includes('gardener')
-          )}
-        />
-        <Footer />
-      </main>
+        </div>
+      </section>
     </Layout>
   );
 }

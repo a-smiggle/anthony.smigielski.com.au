@@ -51,13 +51,11 @@ function Navbar() {
           effect: { boxShadow: ' ' },
         }}
         mainStylings={{
-          layout: { position: 'md:fixed', zIndex: 'z-40' },
-          background: { backgroundColor: ' ' },
-          effect: { boxShadow: ' ' },
-          transitionAnimation: {
-            transitionDelay: 'transition-500',
-            transitionProperty: 'transition-colors',
+          layout: { position: 'sticky', zIndex: 'z-40', top: 'top-0' },
+          background: {
+            backgroundColor: `${themeColor.bgColor} ${themeColor.bgColorDark}`,
           },
+          effect: { boxShadow: 'shadow-sm' },
         }}
         dropdownStylings={{ layout: { right: ' ' } }}
         data={{

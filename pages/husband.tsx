@@ -1,11 +1,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { useInView } from 'react-intersection-observer';
 
-import Blog from '../components/Blog';
-import Footer from '../components/Footer';
 import Layout from '../components/Layout';
-import Title from '../components/Title';
 import Supabase, { Article } from '../lib/Supabase';
 
 export async function getServerSideProps() {
@@ -19,10 +15,7 @@ export async function getServerSideProps() {
 
 function Husband({ articles }: { articles: Article[] }) {
   const [loaded, setLoaded] = useState(false);
-  const { ref, inView } = useInView({
-    threshold: 0.4,
-    initialInView: true,
-  });
+
   useEffect(() => {
     setTimeout(() => {
       setLoaded(true);
@@ -30,60 +23,26 @@ function Husband({ articles }: { articles: Article[] }) {
   }, []);
 
   return (
-    <Layout>
-      <main className="relative flex max-h-[calc(100vh-4rem)] w-screen flex-col overflow-y-auto overflow-x-hidden px-8 md:top-[4rem] md:snap-y">
-        <Title inView={inView}>The Husband</Title>
-        <section
-          ref={ref}
-          className={`flex h-full flex-col justify-between md:snap-center lg:min-h-[calc(100vh-4rem)] lg:flex-row`}
+    <Layout title="The Husband" articles={articles}>
+      <section
+        className={`flex flex-col justify-between px-4 md:my-auto md:flex-row`}
+      >
+        <div
+          className={`flex flex-col justify-center pr-4 ${
+            loaded ? 'fade-in-lr' : ''
+          }`}
         >
-          <div
-            className={`flex h-fit flex-col justify-center pr-4 lg:min-h-[calc(100vh-4rem)] ${
-              loaded ? 'fade-in-lr' : ''
-            }`}
-          >
-            <Image
-              fade-in-lr="4"
-              alt="Wedding Image"
-              src="/images/husband/Image1.svg"
-              width={250}
-              height={250}
-            />
-          </div>
+          <Image
+            fade-in-lr="4"
+            alt="Wedding Image"
+            src="/images/husband/Image1.svg"
+            width={250}
+            height={250}
+          />
+        </div>
 
-          <div className="flex h-fit flex-col justify-center lg:min-h-[calc(100vh-4rem)] lg:w-1/2">
-            <div className={`text-left ${loaded ? 'fade-in-lr' : ''}`}>
-              <h1 fade-in-lr="1">The Husband</h1>
-            </div>
-
-            <div className={`pt-4 text-left ${loaded ? 'fade-in-rl' : ''}`}>
-              <p fade-in-rl="2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Mauris nunc congue nisi vitae suscipit tellus mauris a. A diam
-                sollicitudin tempor id. Ut porttitor leo a diam sollicitudin
-                tempor id. Phasellus egestas tellus rutrum tellus pellentesque.
-                Massa tempor nec feugiat nisl pretium fusce id velit ut. Blandit
-                volutpat maecenas volutpat blandit aliquam. Nam libero justo
-                laoreet sit. Arcu dui vivamus arcu felis bibendum ut tristique
-                et egestas. Eu consequat ac felis donec et odio pellentesque
-                diam volutpat. Pellentesque adipiscing commodo elit at
-                imperdiet. Nibh praesent tristique magna sit amet purus gravida
-                quis. Lacus sed viverra tellus in hac. Sed euismod nisi porta
-                lorem mollis aliquam ut. Sed augue lacus viverra vitae congue eu
-                consequat. Dolor sit amet consectetur adipiscing elit
-                pellentesque. Et odio pellentesque diam volutpat commodo sed
-                egestas. Semper viverra nam libero justo laoreet sit amet
-                cursus. Volutpat sed cras ornare arcu dui. Quisque id diam vel
-                quam elementum pulvinar etiam non quam.
-              </p>
-            </div>
-          </div>
-          <div
-            className={`flex h-full flex-row justify-between lg:min-h-[calc(100vh-4rem)] lg:flex-col ${
-              loaded ? 'fade-in-rl' : ''
-            }`}
-          >
+        <div className={` md:w-3/4 ${loaded ? 'fade-in-rl' : ''}`}>
+          <div className="float-right hidden md:flex">
             <Image
               fade-in-rl="5"
               alt="Thinking Image"
@@ -91,22 +50,66 @@ function Husband({ articles }: { articles: Article[] }) {
               width={250}
               height={250}
             />
+          </div>
+          <h1 fade-in-rl="1">The Husband</h1>
+
+          <p className="pt-4" fade-in-rl="2">
+            I married my amazing wife in 2019 and have been continually growing
+            as a person since then.
+          </p>
+
+          <p className="pt-4" fade-in-rl="3">
+            A key component to our relationship remaining strong is honest
+            communication. I am learning that staying quiet in frustration and
+            not communicating with my wife only leads to further arguments as
+            issues are never truly resolved. Clearly communicating our
+            frustrations, wants and needs are key for the two of us to
+            understand each other.
+          </p>
+
+          <p className="pt-4" fade-in-rl="4">
+            My marriage is a partnership, and it shouldn&apos;t be taken for
+            granted. I will continue to work on myself so that I may become a
+            better husband. I am also aware that the relationship between my
+            wife and I is demonstrating to my daughter how relationships can be.
+          </p>
+          <p className="pt-4" fade-in-rl="5">
+            I will aim to provide regular blog posts on challenges I have as a
+            husband and the resources that I have found to be essential in
+            helping my relationship to thrive.
+          </p>
+          <div className="float-right hidden md:flex">
             <Image
               fade-in-rl="6"
               alt="Discussion Image"
               src="/images/husband/Image3.svg"
               width={250}
               height={250}
+              className="float-right"
             />
           </div>
-        </section>
-        <Blog
-          articles={articles.filter((article) =>
-            article.tags.includes('husband')
-          )}
-        />
-        <Footer />
-      </main>
+        </div>
+        <div
+          className={`flex flex-row justify-between md:hidden ${
+            loaded ? 'fade-in-rl' : ''
+          }`}
+        >
+          <Image
+            fade-in-rl="5"
+            alt="Thinking Image"
+            src="/images/husband/Image2.svg"
+            width={250}
+            height={250}
+          />
+          <Image
+            fade-in-rl="6"
+            alt="Discussion Image"
+            src="/images/husband/Image3.svg"
+            width={250}
+            height={250}
+          />
+        </div>
+      </section>
     </Layout>
   );
 }
