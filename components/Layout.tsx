@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import React, { PropsWithChildren } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-import { Article } from '../lib/Supabase';
+import { Article } from '../types/Article';
 import ArticlesSection from './ArticlesSection';
 import Footer from './Footer';
 import Navbar from './Navbar';
@@ -52,7 +52,7 @@ export default function Layout(props: PropsWithChildren<CustomProps>) {
       return (
         <ArticlesSection
           articles={props.articles.filter((article) =>
-            article.tags.includes(router.pathname.replace('/', ''))
+            article.tags?.includes(router.pathname.replace('/', ''))
           )}
         />
       );
@@ -74,8 +74,12 @@ export default function Layout(props: PropsWithChildren<CustomProps>) {
         {props.title ? (
           <Title inView={props.header ? inView : false}>{props.title}</Title>
         ) : null}
-        <main className="flex min-h-screen flex-col">{props.children}</main>
-        {props.articles ? <FilterArticles /> : null}
+        <main className="flex min-h-[calc(100vh-8rem)] flex-col">
+          {props.children}
+        </main>
+        {props.articles && router.pathname !== '/login' ? (
+          <FilterArticles />
+        ) : null}
         <Footer />
       </div>
     </div>
