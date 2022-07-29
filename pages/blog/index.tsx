@@ -4,7 +4,8 @@ import { Fragment, useEffect, useState } from 'react';
 
 import ArticleCard from '../../components/ArticleCard';
 import Layout from '../../components/Layout';
-import Supabase, { Article } from '../../lib/Supabase';
+import Supabase from '../../lib/Supabase';
+import { Article } from '../../types/Article';
 
 export async function getServerSideProps() {
   const { data } = await Supabase.from('articles').select('*').order('id');
@@ -20,7 +21,9 @@ function BlogPage({ articles }: { articles: Article[] }) {
 
   useEffect(() => {
     if (selected !== 'all')
-      setDisplay(articles.filter((article) => article.tags.includes(selected)));
+      setDisplay(
+        articles.filter((article) => article.tags?.includes(selected))
+      );
     else setDisplay(articles);
   }, [selected]);
 
@@ -30,7 +33,7 @@ function BlogPage({ articles }: { articles: Article[] }) {
     'px-4 py-2 bg-emerald-500 dark:bg-emerald-500 dark:bg-slate-300 text-white dark:text-white uppercase font-bold';
 
   return (
-    <Layout title="Anthony Smigielski" articles={articles}>
+    <Layout articles={articles}>
       <div className="flex min-h-screen flex-row justify-center p-4">
         <div>
           <h1 className="pb-4 text-center">Articles</h1>

@@ -21,7 +21,8 @@ import { TbLetterC } from 'react-icons/tb';
 
 import { SectionThree, SectionTwo } from '../components/Developer';
 import Layout from '../components/Layout';
-import Supabase, { Article } from '../lib/Supabase';
+import Supabase from '../lib/Supabase';
+import { Article } from '../types/Article';
 
 export async function getServerSideProps() {
   const { data } = await Supabase.from('articles').select('*').order('id');
