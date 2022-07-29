@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { Article } from '../lib/Supabase';
+import { Article } from '../types/Article';
 import ArticleCard from './ArticleCard';
 
 export default function ArticlesSection({ articles }: { articles: Article[] }) {
