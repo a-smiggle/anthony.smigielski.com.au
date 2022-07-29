@@ -12,7 +12,7 @@ function SectionThree() {
       {({ inView, ref }) => (
         <section
           ref={ref}
-          className="flex h-screen flex-col items-center justify-between p-4 pt-4 md:flex-row md:border-none"
+          className="flex flex-col items-center justify-between px-4 py-20 md:flex-row md:border-none"
         >
           <div className="flex h-full w-full flex-col justify-center md:flex-row md:justify-between">
             <div

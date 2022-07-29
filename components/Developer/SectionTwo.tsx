@@ -8,7 +8,7 @@ function SectionTwo() {
       {({ inView, ref }) => (
         <section
           ref={ref}
-          className="flex h-screen flex-col items-center justify-center p-4 pt-4 md:flex-row md:justify-between"
+          className="flex flex-col items-center justify-center px-4 py-20 md:flex-row md:justify-between"
         >
           <div
             className={`flex h-full w-full flex-col justify-center md:flex-row md:justify-between ${
@@ -50,8 +50,8 @@ function SectionTwo() {
                 <Image
                   alt=""
                   src="/images/full-stack.png"
-                  width={250}
-                  height={250}
+                  width={500}
+                  height={500}
                 />
               </div>
             </div>
