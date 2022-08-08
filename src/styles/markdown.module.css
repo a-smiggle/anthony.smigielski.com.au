@@ -1,0 +1,55 @@
+.markdown {
+  @apply text-lg leading-relaxed md:w-3/5;
+}
+
+.markdown a {
+  @apply text-emerald-500 hover:underline;
+}
+
+.markdown p, 
+.markdown br { 
+  @apply mt-2;
+}
+
+.markdown ul,
+.markdown ol {
+  @apply mx-6;
+}
+
+.markdown ul {
+  @apply list-disc ;
+}
+.markdown ol {
+  @apply list-decimal ;
+}
+
+.markdown pre {
+  @apply w-3/4 py-2 px-6 bg-slate-900  border-2 border-emerald-500 rounded;
+}
+
+.markdown code {
+  @apply text-emerald-500
+}
+
+.markdown blockquote {
+  @apply my-2 px-2 bg-slate-300 text-black border border-black border-dotted w-fit;
+}
+
+.markdown h1 {
+  @apply text-5xl mt-12 mb-4 leading-snug;
+}
+
+.markdown h2 {
+  @apply text-4xl mt-12 mb-4 leading-snug;
+}
+
+.markdown h3 {
+  @apply text-3xl mt-8 mb-4 leading-snug;
+}
+.markdown h4 {
+  @apply text-2xl mt-8 mb-4 leading-snug;
+}
+
+.markdown img {
+  @apply mx-auto my-6;
+}
