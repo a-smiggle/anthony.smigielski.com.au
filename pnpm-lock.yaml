@@ -46,6 +46,7 @@ dependencies:
   '@nextail/hooks': 0.56.1_biqbaboplfbrettd7655fr4n2y
   '@nextail/providers': 0.2.5_biqbaboplfbrettd7655fr4n2y
   '@supabase/supabase-js': 1.35.6
+  '@tailwindcss/forms': 0.5.2_tailwindcss@3.1.8
   dayjs: 1.11.4
   next: 12.1.6_biqbaboplfbrettd7655fr4n2y
   performant-array-to-tree: 1.11.0
@@ -59,7 +60,6 @@ dependencies:
   swr: 1.3.0_react@18.2.0
 
 devDependencies:
-  '@tailwindcss/forms': 0.5.2_tailwindcss@3.1.8
   '@types/node': 17.0.38
   '@types/react': 18.0.16
   '@types/react-dom': 18.0.6
@@ -369,7 +369,7 @@ packages:
     dependencies:
       mini-svg-data-uri: 1.4.4
       tailwindcss: 3.1.8
-    dev: true
+    dev: false
 
   /@types/debug/4.1.7:
     resolution: {integrity: sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==}
@@ -2319,7 +2319,7 @@ packages:
   /mini-svg-data-uri/1.4.4:
     resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
     hasBin: true
-    dev: true
+    dev: false
 
   /minimatch/3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
