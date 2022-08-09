@@ -39,13 +39,6 @@ function Footer() {
                 Contact Me
               </a>
             </Link>
-            <Link href="/resume">
-              <a
-                className={`hover:underline ${theme.linkColor} ${theme.linkColorDark}`}
-              >
-                Resume
-              </a>
-            </Link>
           </nav>
           <div className="mx-auto mt-4 h-px w-11 rounded-full md:hidden"></div>
           <div className="mt-4 flex flex-1 items-center justify-center md:mt-0">
