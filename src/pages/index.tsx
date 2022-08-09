@@ -71,7 +71,7 @@ export default function Index({ articles }: { articles: Article[] }) {
             </Link>{' '}
             that favors Next.js, Tailwind CSS and Node.js as my favorite tools.
           </p>
-          <p className="pt-4">
+          <p fade-in-lr="4" className="pt-4">
             I am also a devoted{' '}
             <Link href="/father">
               <a className="text-2xl underline hover:text-emerald-500">
