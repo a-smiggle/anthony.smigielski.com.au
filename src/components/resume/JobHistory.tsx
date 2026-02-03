@@ -37,7 +37,8 @@ export default function JobHistory({
             <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
               <div>
                 <CardTitle>
-                  {j.role} <span className="text-slate-500 dark:text-slate-400">@ {j.company}</span>
+                  {j.role}{' '}
+                  <span style={{ color: 'var(--muted)' }}>@ {j.company}</span>
                 </CardTitle>
                 <CardDescription>
                   {j.start_date} - {j.end_date || 'Present'} • {j.location}
@@ -49,9 +50,11 @@ export default function JobHistory({
             </div>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-slate-700 dark:text-slate-200">{j.summary}</p>
+            <p className="text-sm" style={{ color: 'var(--muted-2)' }}>
+              {j.summary}
+            </p>
             {bulletsByJob[j.job_id]?.length ? (
-              <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-slate-700 dark:text-slate-200">
+              <ul className="mt-3 list-disc space-y-1 pl-5 text-sm" style={{ color: 'var(--muted-2)' }}>
                 {bulletsByJob[j.job_id].map((b, idx) => (
                   <li key={`${j.job_id}-${idx}`}>{b}</li>
                 ))}

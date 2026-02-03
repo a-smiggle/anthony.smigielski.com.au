@@ -12,7 +12,8 @@ export function Card({
   return (
     <div
       className={cn(
-        'rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950',
+        'rounded-xl border p-5 shadow-sm',
+        'border-[color:var(--card-border)] bg-[color:var(--card)]',
         className,
       )}
     >
@@ -39,7 +40,7 @@ export function CardTitle({
   children: React.ReactNode;
 }) {
   return (
-    <h3 className={cn('text-base font-semibold text-slate-900 dark:text-slate-100', className)}>
+    <h3 className={cn('text-base font-semibold', className)} style={{ color: 'var(--fg)' }}>
       {children}
     </h3>
   );
@@ -53,7 +54,9 @@ export function CardDescription({
   children: React.ReactNode;
 }) {
   return (
-    <p className={cn('text-sm text-slate-600 dark:text-slate-300', className)}>{children}</p>
+    <p className={cn('text-sm', className)} style={{ color: 'var(--muted)' }}>
+      {children}
+    </p>
   );
 }
 

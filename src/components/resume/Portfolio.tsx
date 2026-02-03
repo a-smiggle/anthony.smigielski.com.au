@@ -24,7 +24,7 @@ export default function Portfolio({ items }: { items: PortfolioRow[] }) {
               href={p.github_url}
               target="_blank"
               rel="noreferrer"
-              className="text-sm font-medium text-emerald-700 underline hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300"
+              className="text-sm font-medium underline"
             >
               View on GitHub
             </a>

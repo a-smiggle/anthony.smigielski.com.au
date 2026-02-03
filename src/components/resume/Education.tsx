@@ -28,7 +28,11 @@ export default function Education({ education }: { education: EducationRow[] }) 
             </CardDescription>
           </CardHeader>
           <CardContent>
-            {e.notes ? <p className="text-sm text-slate-700 dark:text-slate-200">{e.notes}</p> : null}
+            {e.notes ? (
+              <p className="text-sm" style={{ color: 'var(--muted-2)' }}>
+                {e.notes}
+              </p>
+            ) : null}
           </CardContent>
         </Card>
       ))}

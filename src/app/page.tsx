@@ -6,6 +6,8 @@ import JobHistory from '../components/resume/JobHistory';
 import Nav from '../components/resume/Nav';
 import Portfolio from '../components/resume/Portfolio';
 import Skills from '../components/resume/Skills';
+import Button from '../components/ui/Button';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
 import Container from '../components/ui/Container';
 import Section from '../components/ui/Section';
 import { loadCsvFromDataDir } from '../lib/csv';
@@ -21,7 +23,7 @@ export default function HomePage() {
   const portfolio = loadCsvFromDataDir('portfolio.csv');
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <div className="min-h-screen">
       <Nav />
 
       <header className="border-b border-slate-200 dark:border-slate-800">
@@ -34,38 +36,40 @@ export default function HomePage() {
                 Power BI resume.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="#portfolio"
-                  className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-700"
-                >
+                <Button href="#portfolio" variant="primary">
                   View portfolio
-                </a>
-                <a
+                </Button>
+                <Button
                   href="#experience"
-                  className="rounded-lg border border-slate-200 px-4 py-2 text-sm font-medium hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900"
+                  variant="secondary"
+                  className="hover:bg-[color:color-mix(in_srgb,var(--card),var(--bg)_10%)]"
                 >
                   View experience
-                </a>
+                </Button>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900/30">
-              <div className="text-sm font-semibold">Quick links</div>
-              <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
-                <a className="text-emerald-700 underline dark:text-emerald-400" href="#skills">
-                  Skills
-                </a>
-                <a className="text-emerald-700 underline dark:text-emerald-400" href="#education">
-                  Education
-                </a>
-                <a className="text-emerald-700 underline dark:text-emerald-400" href="#timeline">
-                  Job timeline
-                </a>
-                <a className="text-emerald-700 underline dark:text-emerald-400" href="#portfolio">
-                  GitHub portfolio
-                </a>
-              </div>
-            </div>
+            <Card className="p-0">
+              <CardHeader className="p-6 pb-0">
+                <CardTitle className="text-sm">Quick links</CardTitle>
+              </CardHeader>
+              <CardContent className="p-6 pt-3">
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <a className="underline" href="#skills">
+                    Skills
+                  </a>
+                  <a className="underline" href="#education">
+                    Education
+                  </a>
+                  <a className="underline" href="#timeline">
+                    Job timeline
+                  </a>
+                  <a className="underline" href="#portfolio">
+                    GitHub portfolio
+                  </a>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </Container>
       </header>
@@ -97,6 +101,34 @@ export default function HomePage() {
         </Section>
 
         <Section
+          id="certifications"
+          title="Certifications"
+          subtitle="From src/data/certifications.csv"
+        >
+          <Card>
+            <CardContent>
+              <ul className="list-disc space-y-1 pl-5 text-sm text-slate-700 dark:text-slate-200">
+                {(certifications || []).map((c: any, idx: number) => (
+                  <li key={`${c.name}-${idx}`}>
+                    <span className="font-medium">{c.name}</span> — {c.issuer}{' '}
+                    {c.credential_url ? (
+                      <a
+                        className="ml-2 underline"
+                        href={c.credential_url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        credential
+                      </a>
+                    ) : null}
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+        </Section>
+
+        <Section
           id="timeline"
           title="Gantt chart of job history"
           subtitle="From src/data/jobs.csv (supports overlapping roles)"
@@ -114,32 +146,6 @@ export default function HomePage() {
 
         <Section id="portfolio" title="Portfolio" subtitle="GitHub links from src/data/portfolio.csv">
           <Portfolio items={portfolio as any} />
-        </Section>
-
-        <Section
-          id="certifications"
-          title="Certifications"
-          subtitle="From src/data/certifications.csv"
-        >
-          <div className="rounded-xl border border-slate-200 p-5 text-sm text-slate-700 dark:border-slate-800 dark:text-slate-200">
-            <ul className="list-disc space-y-1 pl-5">
-              {(certifications || []).map((c: any, idx: number) => (
-                <li key={`${c.name}-${idx}`}>
-                  <span className="font-medium">{c.name}</span> — {c.issuer}{' '}
-                  {c.credential_url ? (
-                    <a
-                      className="ml-2 text-emerald-700 underline dark:text-emerald-400"
-                      href={c.credential_url}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      credential
-                    </a>
-                  ) : null}
-                </li>
-              ))}
-            </ul>
-          </div>
         </Section>
       </main>
 

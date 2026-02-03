@@ -40,7 +40,7 @@ export default function GanttChart({ jobs }: { jobs: Job[] }) {
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between text-xs text-slate-600 dark:text-slate-300">
+      <div className="flex items-center justify-between text-xs" style={{ color: 'var(--muted)' }}>
         <span>{formatYearMonth(minStart.toISOString().slice(0, 10))}</span>
         <span>{formatYearMonth(maxEnd.toISOString().slice(0, 10))}</span>
       </div>
@@ -56,15 +56,18 @@ export default function GanttChart({ jobs }: { jobs: Job[] }) {
             return (
               <div key={j.job_id} className="grid grid-cols-12 gap-3">
                 <div className="col-span-12 md:col-span-4">
-                  <div className="text-sm font-medium text-slate-900 dark:text-slate-100">
+                  <div className="text-sm font-medium" style={{ color: 'var(--fg)' }}>
                     {j.role}
                   </div>
-                  <div className="text-xs text-slate-600 dark:text-slate-300">
+                  <div className="text-xs" style={{ color: 'var(--muted)' }}>
                     {j.company} • {j.employment_type}
                   </div>
                 </div>
                 <div className="col-span-12 md:col-span-8">
-                  <div className="relative h-7 rounded-md bg-slate-100 dark:bg-slate-900">
+                  <div
+                    className="relative h-7 rounded-md"
+                    style={{ backgroundColor: 'color-mix(in srgb, var(--card), var(--bg) 35%)' }}
+                  >
                     <div
                       className={cn(
                         'absolute top-1/2 h-4 -translate-y-1/2 rounded-md bg-emerald-500/90',

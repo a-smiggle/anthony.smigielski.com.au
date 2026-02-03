@@ -1,8 +1,8 @@
-skill,category,level,years,keywords
-Next.js,Web,Advanced,4,"react,nextjs,ssr"
-React,Web,Advanced,6,"react,spa"
-TypeScript,Language,Advanced,5,"ts,types"
-Node.js,Backend,Advanced,6,"node,express"
-SQL,Data,Advanced,8,"postgres,sqlserver"
-Power BI,Data,Intermediate,3,"powerbi,dax"
-Azure,Cloud,Intermediate,3,"azure,devops"
+skill,category,score,years,keywords,details
+Next.js,Web,90,4,"react,nextjs,ssr","App Router, SSR/SSG, performance and SEO"
+React,Web,88,6,"react,spa","Component architecture, hooks, state management"
+TypeScript,Language,92,5,"ts,types","Type-safe APIs, generics, refactoring"
+Node.js,Backend,85,6,"node,api","REST APIs, auth, background jobs"
+SQL,Data,87,8,"postgres,sqlserver","Schema design, query tuning, reporting"
+Power BI,Data,75,3,"powerbi,dax","Data modelling, DAX, dashboards"
+Azure,Cloud,70,3,"azure,devops","CI/CD, App Service, storage"

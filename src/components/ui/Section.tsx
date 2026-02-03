@@ -20,11 +20,13 @@ export default function Section({
     <section id={id} className={cn('scroll-mt-24 py-16', className)}>
       <Container>
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
+          <h2 className="text-2xl font-semibold tracking-tight" style={{ color: 'var(--fg)' }}>
             {title}
           </h2>
           {subtitle ? (
-            <p className="mt-2 text-slate-600 dark:text-slate-300">{subtitle}</p>
+            <p className="mt-2" style={{ color: 'var(--muted)' }}>
+              {subtitle}
+            </p>
           ) : null}
         </div>
         {children}

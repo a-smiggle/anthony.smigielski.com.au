@@ -1,20 +1,18 @@
 {
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
-
   "search.exclude": {
     "package-lock.json": true
   },
-
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "explicit",
     "source.fixAll": "explicit"
   },
-
   "[json][jsonc]": {
     "editor.formatOnSave": true
   },
-
-  "cSpell.words": ["tailwindcss"]
+  "cSpell.words": [
+    "tailwindcss"
+  ]
 }
