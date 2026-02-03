@@ -3,17 +3,30 @@
 @tailwind utilities;
 
 @layer base {
-  
-    h1 {
-      @apply text-3xl font-extrabold;
-    }
-    h2 {
-      @apply text-2xl font-bold;
-    }
-    h3 {
-      @apply text-xl font-semibold
-    }
-    h4 {
-      @apply text-lg font-medium
-    }
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: #0f172a; /* slate-900 */
+  }
+
+  .dark body {
+    background-color: #020617; /* slate-950 */
+    color: #f8fafc; /* slate-50 */
+  }
+
+  h1 {
+    @apply text-3xl font-extrabold;
+  }
+  h2 {
+    @apply text-2xl font-bold;
+  }
+  h3 {
+    @apply text-xl font-semibold;
+  }
+  h4 {
+    @apply text-lg font-medium;
+  }
 }

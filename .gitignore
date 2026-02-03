@@ -33,3 +33,12 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# vscode (optional - uncomment if you don't want to commit workspace settings)
+# /.vscode/
+
+# macOS
+.DS_Store
+
+# logs
+*.log

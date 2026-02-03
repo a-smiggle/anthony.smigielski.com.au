@@ -1,0 +1,8 @@
+skill,category,level,years,keywords
+Next.js,Web,Advanced,4,"react,nextjs,ssr"
+React,Web,Advanced,6,"react,spa"
+TypeScript,Language,Advanced,5,"ts,types"
+Node.js,Backend,Advanced,6,"node,express"
+SQL,Data,Advanced,8,"postgres,sqlserver"
+Power BI,Data,Intermediate,3,"powerbi,dax"
+Azure,Cloud,Intermediate,3,"azure,devops"

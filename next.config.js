@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
-  swcMinify: true,
+  reactStrictMode: true,
   images: {
-    domains: ['api.lorem.space', 'images.pexels.com'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'api.lorem.space' },
+      { protocol: 'https', hostname: 'images.pexels.com' },
+    ],
   },
 };
 
